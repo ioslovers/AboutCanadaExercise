@@ -15,6 +15,10 @@
 		3924E1CA23F7EF9D00B7A19B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3924E1C823F7EF9D00B7A19B /* LaunchScreen.storyboard */; };
 		3924E1D523F7EF9F00B7A19B /* AboutCanadaExerciseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E1D423F7EF9F00B7A19B /* AboutCanadaExerciseTests.swift */; };
 		3924E1E023F7EF9F00B7A19B /* AboutCanadaExerciseUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E1DF23F7EF9F00B7A19B /* AboutCanadaExerciseUITests.swift */; };
+		3924E1EF23F808E200B7A19B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E1EE23F808E200B7A19B /* Network.swift */; };
+		3924E1F223F8094C00B7A19B /* SessionEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E1F123F8094C00B7A19B /* SessionEndPoints.swift */; };
+		3924E1F623F80A3D00B7A19B /* Facts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3924E1F523F80A3D00B7A19B /* Facts.swift */; };
+		3924E1F923F80B8F00B7A19B /* Facts.json in Resources */ = {isa = PBXBuildFile; fileRef = 3924E1F823F80B8F00B7A19B /* Facts.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		3924E1DB23F7EF9F00B7A19B /* AboutCanadaExerciseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AboutCanadaExerciseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3924E1DF23F7EF9F00B7A19B /* AboutCanadaExerciseUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCanadaExerciseUITests.swift; sourceTree = "<group>"; };
 		3924E1E123F7EF9F00B7A19B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3924E1EE23F808E200B7A19B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		3924E1F123F8094C00B7A19B /* SessionEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionEndPoints.swift; sourceTree = "<group>"; };
+		3924E1F523F80A3D00B7A19B /* Facts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Facts.swift; sourceTree = "<group>"; };
+		3924E1F823F80B8F00B7A19B /* Facts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Facts.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 		3924E1BC23F7EF8D00B7A19B /* AboutCanadaExercise */ = {
 			isa = PBXGroup;
 			children = (
+				3924E1ED23F7F5C300B7A19B /* CanadaDomain */,
 				3924E1BD23F7EF8E00B7A19B /* AppDelegate.swift */,
 				3924E1BF23F7EF8E00B7A19B /* SceneDelegate.swift */,
 				3924E1C123F7EF8E00B7A19B /* ContentView.swift */,
@@ -123,6 +132,7 @@
 			children = (
 				3924E1D423F7EF9F00B7A19B /* AboutCanadaExerciseTests.swift */,
 				3924E1D623F7EF9F00B7A19B /* Info.plist */,
+				3924E1F823F80B8F00B7A19B /* Facts.json */,
 			);
 			path = AboutCanadaExerciseTests;
 			sourceTree = "<group>";
@@ -134,6 +144,24 @@
 				3924E1E123F7EF9F00B7A19B /* Info.plist */,
 			);
 			path = AboutCanadaExerciseUITests;
+			sourceTree = "<group>";
+		};
+		3924E1ED23F7F5C300B7A19B /* CanadaDomain */ = {
+			isa = PBXGroup;
+			children = (
+				3924E1F423F8099900B7A19B /* Modals */,
+				3924E1EE23F808E200B7A19B /* Network.swift */,
+				3924E1F123F8094C00B7A19B /* SessionEndPoints.swift */,
+			);
+			path = CanadaDomain;
+			sourceTree = "<group>";
+		};
+		3924E1F423F8099900B7A19B /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				3924E1F523F80A3D00B7A19B /* Facts.swift */,
+			);
+			path = Modals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3924E1F923F80B8F00B7A19B /* Facts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +297,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3924E1BE23F7EF8E00B7A19B /* AppDelegate.swift in Sources */,
+				3924E1F623F80A3D00B7A19B /* Facts.swift in Sources */,
 				3924E1C023F7EF8E00B7A19B /* SceneDelegate.swift in Sources */,
+				3924E1F223F8094C00B7A19B /* SessionEndPoints.swift in Sources */,
+				3924E1EF23F808E200B7A19B /* Network.swift in Sources */,
 				3924E1C223F7EF8E00B7A19B /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
