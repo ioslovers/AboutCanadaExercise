@@ -1,17 +1,17 @@
 //
-//  AboutCanadaExerciseTests.swift
-//  AboutCanadaExerciseTests
+//  AboutCanadaTests.swift
+//  AboutCanadaTests
 //
-//  Created by Ashish Tripathi on 15/02/20.
+//  Created by Ashish Tripathi on 16/02/20.
 //  Copyright © 2020 Ashish Tripathi. All rights reserved.
 //
 
 import XCTest
-@testable import AboutCanadaExercise
+@testable import AboutCanada
 
-class AboutCanadaExerciseTests: XCTestCase {
+class AboutCanadaTests: XCTestCase {
 
-    var factsList: Facts?
+   var factsList: Facts?
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -42,7 +42,7 @@ class AboutCanadaExerciseTests: XCTestCase {
                 XCTFail("Expected get facts service response with error json")
             }
         }
-        self.waitForExpectations(timeout: 600.0)
+        self.waitForExpectations(timeout: 6.0)
     }
     
     func testServiceError() {

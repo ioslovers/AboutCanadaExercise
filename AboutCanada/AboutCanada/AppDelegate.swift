@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  AboutCanadaExercise
+//  AboutCanada
 //
-//  Created by Ashish Tripathi on 15/02/20.
+//  Created by Ashish Tripathi on 16/02/20.
 //  Copyright © 2020 Ashish Tripathi. All rights reserved.
 //
 

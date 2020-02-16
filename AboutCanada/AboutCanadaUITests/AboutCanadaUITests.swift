@@ -1,14 +1,14 @@
 //
-//  AboutCanadaExerciseUITests.swift
-//  AboutCanadaExerciseUITests
+//  AboutCanadaUITests.swift
+//  AboutCanadaUITests
 //
-//  Created by Ashish Tripathi on 15/02/20.
+//  Created by Ashish Tripathi on 16/02/20.
 //  Copyright © 2020 Ashish Tripathi. All rights reserved.
 //
 
 import XCTest
 
-class AboutCanadaExerciseUITests: XCTestCase {
+class AboutCanadaUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
