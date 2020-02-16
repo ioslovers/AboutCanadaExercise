@@ -10,22 +10,27 @@ import UIKit
 
 class RowTableViewCell: UITableViewCell {
     
+    public var id = 0
     public var row : Row? {
         didSet {
             titleLabel.text = row?.title
             descriptionLabel.text = row?.description
             activityIndicator.startAnimating()
-            rowImage.loadThumbnail(urlSting: row?.imageHref ?? "noImage") { (result) in
+            rowImage.loadThumbnail(urlSting: row?.imageHref ?? "noImage") { (_) in
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                 }
             }
+            titleLabel.accessibilityIdentifier = "\(id)_title"
+            descriptionLabel.accessibilityIdentifier = "\(id)_description"
+            rowImage.accessibilityIdentifier = "\(id)_image"
+            accessibilityIdentifier = "\(id)_rowCell"
         }
     }
     
     private let titleLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
+        lbl.textColor = UIColor.myColor()
         lbl.font = UIFont.boldSystemFont(ofSize: 24)
         lbl.textAlignment = .left
         return lbl
@@ -35,14 +40,14 @@ class RowTableViewCell: UITableViewCell {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = .medium
-        activityIndicator.color = .darkGray
+        activityIndicator.color = UIColor.myColor()
         return activityIndicator
     }()
     
     
     private let descriptionLabel : UILabel = {
         let lbl = UILabel()
-        lbl.textColor = .black
+        lbl.textColor = UIColor.myColor()
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.textAlignment = .left
         lbl.numberOfLines = 0
@@ -53,6 +58,9 @@ class RowTableViewCell: UITableViewCell {
         let imgView = UIImageView(image: UIImage(named: "noImage"))
         imgView.contentMode = .scaleAspectFit
         imgView.clipsToBounds = true
+        imgView.layer.cornerRadius = 12
+        imgView.layer.borderWidth = 1.0
+        imgView.layer.borderColor = UIColor.red.cgColor
         return imgView
     }()
     
@@ -82,15 +90,15 @@ class RowTableViewCell: UITableViewCell {
         
         activityIndicator.anchor(top: rowImage.topAnchor,
                                  left: rowImage.leftAnchor,
-        bottom: nil,
-        right: nil,
-        paddingTop: 35,
-        paddingLeft: 40,
-        paddingBottom: 0,
-        paddingRight: 0,
-        width: 10,
-        height: 10,
-        enableInsets: false)
+                                 bottom: nil,
+                                 right: nil,
+                                 paddingTop: 20,
+                                 paddingLeft: 40,
+                                 paddingBottom: 0,
+                                 paddingRight: 0,
+                                 width: 10,
+                                 height: 10,
+                                 enableInsets: false)
         
         titleLabel.anchor(top: topAnchor,
                           left: rowImage.rightAnchor,
@@ -98,8 +106,8 @@ class RowTableViewCell: UITableViewCell {
                           right: rightAnchor,
                           paddingTop: 10,
                           paddingLeft: 10,
-                          paddingBottom: 10,
-                          paddingRight: 0,
+                          paddingBottom: 0,
+                          paddingRight: 20,
                           width: 0,
                           height: 0,
                           enableInsets: false)

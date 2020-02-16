@@ -96,10 +96,22 @@ extension UIImageView {
                 completionHandler(true)
             case .failure(_):
                 DispatchQueue.main.async {
-                    self.image = UIImage(named: "noImage")
+                    self.image = UIImage(named: "failed")
                 }
                 completionHandler(true)
             }
         }
+    }
+}
+
+extension UIColor {
+    static func myColor() -> UIColor {
+        if #available(iOS 13, *) {
+            return UIColor.init { (trait) -> UIColor in
+                // the color can be from your own color config struct as well.
+                return trait.userInterfaceStyle == .dark ? UIColor.orange : UIColor.black
+            }
+        }
+        else { return UIColor.orange }
     }
 }

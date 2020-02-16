@@ -11,13 +11,15 @@
 		39823E9623F9131B003539DC /* ExtensionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39823E9523F9131B003539DC /* ExtensionHelper.swift */; };
 		39823E9823F92C40003539DC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39860ED623F8F86B00C87010 /* LaunchScreen.storyboard */; };
 		39823E9923F92CB1003539DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39860ED123F8F86600C87010 /* Main.storyboard */; };
+		39823E9F23F94C91003539DC /* AboutCanadaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39823E9E23F94C91003539DC /* AboutCanadaViewController.swift */; };
+		39823EA123F94CC9003539DC /* AboutCanadaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39823EA023F94CC9003539DC /* AboutCanadaViewModel.swift */; };
+		39823EA323F95D76003539DC /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39823EA223F95D76003539DC /* Alert.swift */; };
 		39860ECC23F8F86600C87010 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39860ECB23F8F86600C87010 /* AppDelegate.swift */; };
 		39860ECE23F8F86600C87010 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39860ECD23F8F86600C87010 /* SceneDelegate.swift */; };
-		39860ED023F8F86600C87010 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39860ECF23F8F86600C87010 /* ViewController.swift */; };
 		39860ED523F8F86B00C87010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39860ED423F8F86B00C87010 /* Assets.xcassets */; };
 		39860EE323F8F86B00C87010 /* AboutCanadaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39860EE223F8F86B00C87010 /* AboutCanadaTests.swift */; };
 		39860EEE23F8F86B00C87010 /* AboutCanadaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39860EED23F8F86B00C87010 /* AboutCanadaUITests.swift */; };
-		39860F0023F8F8D700C87010 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39860EFD23F8F8D700C87010 /* Network.swift */; };
+		39860F0023F8F8D700C87010 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39860EFD23F8F8D700C87010 /* Networking.swift */; };
 		39860F0123F8F8D700C87010 /* SessionEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39860EFE23F8F8D700C87010 /* SessionEndPoints.swift */; };
 		39860F0223F8F8D700C87010 /* Facts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39860EFF23F8F8D700C87010 /* Facts.swift */; };
 		39860F0423F8F91F00C87010 /* Facts.json in Resources */ = {isa = PBXBuildFile; fileRef = 39860F0323F8F91F00C87010 /* Facts.json */; };
@@ -43,10 +45,12 @@
 /* Begin PBXFileReference section */
 		39823E9323F9113C003539DC /* RowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowTableViewCell.swift; sourceTree = "<group>"; };
 		39823E9523F9131B003539DC /* ExtensionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionHelper.swift; sourceTree = "<group>"; };
+		39823E9E23F94C91003539DC /* AboutCanadaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutCanadaViewController.swift; sourceTree = "<group>"; };
+		39823EA023F94CC9003539DC /* AboutCanadaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCanadaViewModel.swift; sourceTree = "<group>"; };
+		39823EA223F95D76003539DC /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		39860EC823F8F86600C87010 /* AboutCanada.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AboutCanada.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39860ECB23F8F86600C87010 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39860ECD23F8F86600C87010 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		39860ECF23F8F86600C87010 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		39860ED223F8F86600C87010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		39860ED423F8F86B00C87010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		39860ED723F8F86B00C87010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,7 +61,7 @@
 		39860EE923F8F86B00C87010 /* AboutCanadaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AboutCanadaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		39860EED23F8F86B00C87010 /* AboutCanadaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCanadaUITests.swift; sourceTree = "<group>"; };
 		39860EEF23F8F86B00C87010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		39860EFD23F8F8D700C87010 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		39860EFD23F8F8D700C87010 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		39860EFE23F8F8D700C87010 /* SessionEndPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionEndPoints.swift; sourceTree = "<group>"; };
 		39860EFF23F8F8D700C87010 /* Facts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facts.swift; sourceTree = "<group>"; };
 		39860F0323F8F91F00C87010 /* Facts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Facts.json; sourceTree = "<group>"; };
@@ -88,6 +92,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39823EA423F97382003539DC /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				39823EA823F97443003539DC /* Extension */,
+				39823EA223F95D76003539DC /* Alert.swift */,
+				39823E9323F9113C003539DC /* RowTableViewCell.swift */,
+			);
+			path = "UI Components";
+			sourceTree = "<group>";
+		};
+		39823EA523F973AE003539DC /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				39823EA623F973C1003539DC /* View Model */,
+				39823E9E23F94C91003539DC /* AboutCanadaViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		39823EA623F973C1003539DC /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				39823EA023F94CC9003539DC /* AboutCanadaViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		39823EA723F97409003539DC /* Data Modal */ = {
+			isa = PBXGroup;
+			children = (
+				39860EFF23F8F8D700C87010 /* Facts.swift */,
+			);
+			path = "Data Modal";
+			sourceTree = "<group>";
+		};
+		39823EA823F97443003539DC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				39823E9523F9131B003539DC /* ExtensionHelper.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		39860EBF23F8F86600C87010 = {
 			isa = PBXGroup;
 			children = (
@@ -114,13 +161,10 @@
 				39860EFB23F8F89800C87010 /* Services */,
 				39860ECB23F8F86600C87010 /* AppDelegate.swift */,
 				39860ECD23F8F86600C87010 /* SceneDelegate.swift */,
-				39860ECF23F8F86600C87010 /* ViewController.swift */,
-				39823E9323F9113C003539DC /* RowTableViewCell.swift */,
 				39860ED123F8F86600C87010 /* Main.storyboard */,
 				39860ED423F8F86B00C87010 /* Assets.xcassets */,
 				39860ED623F8F86B00C87010 /* LaunchScreen.storyboard */,
 				39860ED923F8F86B00C87010 /* Info.plist */,
-				39823E9523F9131B003539DC /* ExtensionHelper.swift */,
 			);
 			path = AboutCanada;
 			sourceTree = "<group>";
@@ -147,19 +191,21 @@
 		39860EFB23F8F89800C87010 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				39860EFC23F8F8AC00C87010 /* Data Modal */,
+				39860EFC23F8F8AC00C87010 /* Network Call */,
+				39823EA523F973AE003539DC /* View Controller */,
+				39823EA423F97382003539DC /* UI Components */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		39860EFC23F8F8AC00C87010 /* Data Modal */ = {
+		39860EFC23F8F8AC00C87010 /* Network Call */ = {
 			isa = PBXGroup;
 			children = (
-				39860EFF23F8F8D700C87010 /* Facts.swift */,
-				39860EFD23F8F8D700C87010 /* Network.swift */,
+				39823EA723F97409003539DC /* Data Modal */,
+				39860EFD23F8F8D700C87010 /* Networking.swift */,
 				39860EFE23F8F8D700C87010 /* SessionEndPoints.swift */,
 			);
-			path = "Data Modal";
+			path = "Network Call";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,13 +340,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39860ED023F8F86600C87010 /* ViewController.swift in Sources */,
 				39860F0223F8F8D700C87010 /* Facts.swift in Sources */,
 				39860ECC23F8F86600C87010 /* AppDelegate.swift in Sources */,
 				39860F0123F8F8D700C87010 /* SessionEndPoints.swift in Sources */,
-				39860F0023F8F8D700C87010 /* Network.swift in Sources */,
+				39860F0023F8F8D700C87010 /* Networking.swift in Sources */,
+				39823E9F23F94C91003539DC /* AboutCanadaViewController.swift in Sources */,
 				39823E9623F9131B003539DC /* ExtensionHelper.swift in Sources */,
 				39823E9423F9113C003539DC /* RowTableViewCell.swift in Sources */,
+				39823EA123F94CC9003539DC /* AboutCanadaViewModel.swift in Sources */,
+				39823EA323F95D76003539DC /* Alert.swift in Sources */,
 				39860ECE23F8F86600C87010 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
