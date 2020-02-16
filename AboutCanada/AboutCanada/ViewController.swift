@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let cellId = "rowCell"
     private var facts: Facts? = nil
     private var tableView: UITableView!
+    private var activityIndicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +36,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                          height: 0,
                          enableInsets: false)
         
+        activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        activityIndicator.center = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
+        activityIndicator.color = .black
+        activityIndicator.style = .large
+        view.addSubview(activityIndicator)
+        
+        //Refresh Button
+        let leftBarButton = UIBarButtonItem(title: "Refresh",
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(fetchFactsAboutCanada))
+        navigationItem.setRightBarButton(leftBarButton, animated: true)
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(RowTableViewCell.self, forCellReuseIdentifier: cellId)
     }
     
-    func fetchFactsAboutCanada() {
-        Networking.fetchFactsAboutCanada { result in
+    @objc func fetchFactsAboutCanada() {
+        activityIndicator.startAnimating()
+        Networking.fetchFactsAboutCanada { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let factsData):
                 self.facts = factsData
@@ -51,7 +67,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.main.async {
                 self.title = self.facts?.title ?? ""
                 self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
             }
+            
         }
     }
 
