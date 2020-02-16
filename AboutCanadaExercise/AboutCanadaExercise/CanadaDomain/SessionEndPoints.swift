@@ -10,6 +10,6 @@ import Foundation
 
 ///End point urls
 public enum SessionEndPoints: String {
-    case prod = "https://bruce-v2-mob.fairfaxmedia.com.au/1/coding_test/13ZZQX/full"
+    case prod = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     case test = "https://www.ashishtripathi.com.au"
 }

@@ -43,11 +43,13 @@ final class Networking: NSObject {
                 return
             }
             
-            guard let data = data, error == nil else { return }
+            guard let data = data,
+                let utf8Data = String(decoding: data, as: UTF8.self).data(using: .utf8),
+                error == nil else { return }
             
             do {
                 let decoder = JSONDecoder()
-                let json = try decoder.decode(Facts.self, from: data)
+                let json = try decoder.decode(Facts.self, from: utf8Data)
                 completion(.success(json))
             } catch let error {
                 print(error.localizedDescription)

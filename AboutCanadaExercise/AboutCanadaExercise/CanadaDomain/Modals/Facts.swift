@@ -15,11 +15,6 @@ public struct Facts: Codable {
 
 public struct Row: Codable {
     public let title: String?
-    public let rowDescription: String?
+    public let description: String?
     public let imageHref: String?
-    enum CodingKeys: String, CodingKey {
-        case title
-        case rowDescription = "description"
-        case imageHref
-    }
 }

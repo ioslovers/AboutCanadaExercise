@@ -36,7 +36,6 @@ class AboutCanadaExerciseTests: XCTestCase {
         Networking.fetchFactsAboutCanada { result in
             switch result {
             case .success(let data):
-                print(data.title!)
                 XCTAssertNotNil(data)
                 expectation.fulfill()
             default:
