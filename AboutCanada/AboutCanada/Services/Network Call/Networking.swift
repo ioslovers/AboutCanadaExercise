@@ -11,8 +11,19 @@ import Foundation
 /// with success and failure case
 public enum Result<T> {
     case success(T)
-    case failure(Error)
+    case failure(NetworkingErrors)
 }
+
+
+public enum NetworkingErrors: Error {
+    case errorParsingJSON
+    case noInternetConnection
+    case dataReturnedNil
+    case returnedError(Error)
+    case invalidStatusCode(Int)
+    case customError(String)
+}
+
 
 final class Networking: NSObject {
     
@@ -39,21 +50,23 @@ final class Networking: NSObject {
         Networking.getData(url: url) { (data, response, error) in
             
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(NetworkingErrors.returnedError(error)))
                 return
             }
             
             guard let data = data,
                 let utf8Data = String(decoding: data, as: UTF8.self).data(using: .utf8),
-                error == nil else { return }
+                error == nil else {
+                    completion(.failure(NetworkingErrors.dataReturnedNil))
+                return
+            }
             
             do {
                 let decoder = JSONDecoder()
                 let json = try decoder.decode(Facts.self, from: utf8Data)
                 completion(.success(json))
-            } catch let error {
-                print(error.localizedDescription)
-                completion(.failure(error))
+            } catch {
+                completion(.failure(NetworkingErrors.errorParsingJSON))
             }
         }
     }
@@ -65,11 +78,12 @@ final class Networking: NSObject {
         Networking.getData(url: url) { data, response, error in
             
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(NetworkingErrors.returnedError(error)))
                 return
             }
             
             guard let data = data, error == nil else {
+                completion(.failure(NetworkingErrors.dataReturnedNil))
                 return
             }
             

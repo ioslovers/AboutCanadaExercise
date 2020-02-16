@@ -10,8 +10,8 @@ import XCTest
 @testable import AboutCanada
 
 class AboutCanadaTests: XCTestCase {
-
-   var factsList: Facts?
+    
+    var factsList: Facts?
     
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,11 +24,11 @@ class AboutCanadaTests: XCTestCase {
         let decoder = JSONDecoder()
         factsList = try? decoder.decode(Facts.self, from: data)
     }
-
+    
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
+    
     func testProductionServiceRunning() {
         // Put the code you want to measure the time of here.
         setUp()
@@ -54,17 +54,32 @@ class AboutCanadaTests: XCTestCase {
                 expectation.fulfill()
             default:
                 XCTFail("Expected get facts service response with error json")
-
+                
             }
         }
         self.waitForExpectations(timeout: 6.0)
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testFactsTitle() {
+        XCTAssertEqual(factsList?.title, "About Canada")
     }
-
+    
+    func testImageUrlShoudNotBeNil() {
+        XCTAssertNotNil(factsList?.rows?.first?.imageHref)
+    }
+    
+    func testImageIsDownloaded() {
+        let expectation = self.expectation(description: "Image should be download")
+        guard let imageUrl = factsList?.rows?.first?.imageHref else {
+            XCTFail("failed to get url")
+            return
+        }
+        Networking.downloadImage(url: URL(fileURLWithPath: imageUrl)) { data in
+            XCTAssertNotNil(data)
+            expectation.fulfill()
+        }
+        self.waitForExpectations(timeout: 6.0)
+    }
 }
+
+

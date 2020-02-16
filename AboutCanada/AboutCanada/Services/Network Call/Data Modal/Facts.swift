@@ -9,8 +9,8 @@
 import Foundation
 
 public struct Facts: Codable {
-    public let title: String?
-    public let rows: [Row]?
+    public var title: String?
+    public var rows: [Row]?
 }
 
 public struct Row: Codable {
