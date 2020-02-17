@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  AboutCanada
+
+  Created by Ashish Tripathi on 17/2/20.
+  Copyright © 2020 Ashish Tripathi. All rights reserved.
+*/
+
+// About Canada view controller
+"refreshTitle" = "Refresh";
+"refreshingStatus" = "Refreshing...";
+"okButtonTitle" = "Ok";
+
+// RowCell
+"cellIdentifier" = "%@_cell";
+"titleIdentifier" = "%@_title";
+"descriptionIdentifier" = "%@_description";
+
+// Error scenarios
+"jsonDataNil" = "Json data is nil";
+"jsonParsingError" = "Json parsing error";
+"connectionError" = "Connection Error";
+"pleaseTryAgain" = "please try again..";
