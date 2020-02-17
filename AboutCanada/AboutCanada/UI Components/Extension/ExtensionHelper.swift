@@ -10,9 +10,11 @@ import UIKit
 
 let imageCache = NSCache<AnyObject, AnyObject>()
 
+// MARK: - UIView Extension
 extension UIView {
     
-    func anchor (top: NSLayoutYAxisAnchor?,
+    /// This method will add relative constraints to the given view.
+    public func addAnchor (top: NSLayoutYAxisAnchor?,
                  left: NSLayoutXAxisAnchor?,
                  bottom: NSLayoutYAxisAnchor?,
                  right: NSLayoutXAxisAnchor?,
@@ -31,9 +33,6 @@ extension UIView {
             let insets = self.safeAreaInsets
             topInset = insets.top
             bottomInset = insets.bottom
-            
-            print("Top: \(topInset)")
-            print("bottom: \(bottomInset)")
         }
         
         translatesAutoresizingMaskIntoConstraints = false
@@ -66,7 +65,7 @@ extension UIImageView {
     
     /// This loadThumbnail function is used to download thumbnail image using urlString
     /// This method also using cache of loaded thumbnail using urlString as a key of cached thumbnail.
-    func loadThumbnail(urlSting: String, completionHandler: @escaping (Bool) -> ()) {
+    public func loadThumbnail(urlSting: String, completionHandler: @escaping (Bool) -> ()) {
         guard let url = URL(string: urlSting) else {
             completionHandler(true)
             return
@@ -104,8 +103,10 @@ extension UIImageView {
     }
 }
 
+// MARK: - UIColor extension
+
 extension UIColor {
-    static func myColor() -> UIColor {
+    static func darkModeSupportedColor() -> UIColor {
         if #available(iOS 13, *) {
             return UIColor.init { (trait) -> UIColor in
                 // the color can be from your own color config struct as well.
@@ -113,5 +114,14 @@ extension UIColor {
             }
         }
         else { return UIColor.orange }
+    }
+}
+
+// MARK: - String extension
+
+extension String {
+    // Method to provide accessibility identifier for Accessibility keys provided by respective features
+    func accessibilityIdentifier(with arguments: CVarArg...) -> String {
+        return String(format: self, arguments: arguments)
     }
 }

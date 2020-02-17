@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - AboutCanadaViewModelDelegate Protocol
+
 protocol AboutCanadaViewModelDelegate: class {
     func isLoading()
     func didFinishLoading()
@@ -16,17 +18,22 @@ protocol AboutCanadaViewModelDelegate: class {
 
 final class AboutCanadaViewModel {
     
+    // MARK: - Public Protocol
     public weak var delegate: AboutCanadaViewModelDelegate?
     public var facts: Facts? = nil
     
+    // MARK: - Internal functions
     internal func viewDidLoad() {
         fetchAboutCanadaFacts()
     }
     
+    /// Calling a network request to get the Facts about Canada
     internal func fetchAboutCanadaFacts() {
+        /// Showing activity loader
         delegate?.isLoading()
         Networking.fetchFactsAboutCanada { [weak self] result in
             guard let self = self else { return }
+            
             switch result {
             case .success(let factsData):
                 self.facts = factsData
@@ -48,6 +55,7 @@ final class AboutCanadaViewModel {
         }
     }
     
+    /// showing error message if service failed
     private func handleError(title: String, message: String) {
         DispatchQueue.main.async {
             self.delegate?.shouldDisplayErrorDialog(title: title, message: message)
