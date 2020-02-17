@@ -16,4 +16,8 @@
 "titleIdentifier" = "%@_title";
 "descriptionIdentifier" = "%@_description";
 
-
+// Error scenarios
+"jsonDataNil" = "Json data is nil";
+"jsonParsingError" = "Json parsing error";
+"connectionError" = "Connection Error";
+"pleaseTryAgain" = "please try again..";

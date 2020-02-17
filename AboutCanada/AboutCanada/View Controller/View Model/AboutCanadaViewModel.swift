@@ -18,9 +18,10 @@ protocol AboutCanadaViewModelDelegate: class {
 
 final class AboutCanadaViewModel {
     
-    // MARK: - Public Protocol
+    // MARK: - Public variables
     public weak var delegate: AboutCanadaViewModelDelegate?
     public var facts: Facts? = nil
+    public var filteredRows: [Row]?
     
     // MARK: - Internal functions
     internal func viewDidLoad() {
@@ -37,15 +38,29 @@ final class AboutCanadaViewModel {
             switch result {
             case .success(let factsData):
                 self.facts = factsData
+                
+                /// Filtering non nill object based on the title value
+                if let rows = self.facts?.rows {
+                    self.filteredRows = rows.filter { $0.title != nil }
+                }
             case .failure(let error):
                 switch error {
                 case .dataReturnedNil:
-                    self.handleError(title: "Json data is nil", message: "please try again")
+                    self.handleError(title: NSLocalizedString("jsonDataNil",
+                                                              comment: "json Data Nil"),
+                                     message: NSLocalizedString("pleaseTryAgain",
+                                                                comment: "please Try Again"))
                 case .errorParsingJSON:
-                    self.handleError(title: "Json parsing error", message: "please try again..")
+                    self.handleError(title: NSLocalizedString("jsonParsingError",
+                                                              comment: "json Parsing Error"),
+                                     message: NSLocalizedString("pleaseTryAgain",
+                                                                comment: "please Try Again"))
                     
                 default:
-                    self.handleError(title: "Connection Error", message: "please try again..")
+                    self.handleError(title: NSLocalizedString("connectionError",
+                                                              comment: "connection Error"),
+                                     message: NSLocalizedString("pleaseTryAgain",
+                                                                comment: "please Try Again"))
                 }
                 self.facts = nil
             }

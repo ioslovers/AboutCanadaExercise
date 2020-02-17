@@ -10,7 +10,6 @@ import UIKit
 
 final class AboutCanadaViewController: UIViewController {
 
-    private let cellIdentifier = "rowCellIdentifier"
     private var tableView: UITableView!
     private var activityIndicator = UIActivityIndicatorView()
     private let refreshControl = UIRefreshControl()
@@ -54,7 +53,7 @@ final class AboutCanadaViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = false
-        tableView.register(RowTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(RowTableViewCell.self, forCellReuseIdentifier: ConstantsString.cellIdentifier)
         tableView.refreshControl = refreshControl
     }
     
@@ -95,17 +94,17 @@ final class AboutCanadaViewController: UIViewController {
 
 extension AboutCanadaViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard let rows = aboutCanadaViewModel.facts?.rows, !rows.isEmpty else { return 0 }
+        guard let rows = aboutCanadaViewModel.filteredRows, !rows.isEmpty else { return 0 }
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let rows = aboutCanadaViewModel.facts?.rows else { return 0 }
+        guard let rows = aboutCanadaViewModel.filteredRows else { return 0 }
         return rows.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath as IndexPath) as! RowTableViewCell
-        guard let rows = aboutCanadaViewModel.facts?.rows else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: ConstantsString.cellIdentifier, for: indexPath as IndexPath) as! RowTableViewCell
+        guard let rows = aboutCanadaViewModel.filteredRows else { return UITableViewCell() }
         cell.row = rows[indexPath.row]
         return cell
     }

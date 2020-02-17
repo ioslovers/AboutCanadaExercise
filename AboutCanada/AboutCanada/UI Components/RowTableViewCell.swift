@@ -18,7 +18,7 @@ class RowTableViewCell: UITableViewCell {
             titleLabel.text = row?.title
             descriptionLabel.text = row?.description
             activityIndicator.startAnimating()
-            rowImage.loadThumbnail(urlSting: row?.imageHref ?? "noImage") { (_) in
+            rowImage.loadThumbnail(urlSting: row?.imageHref ?? ConstantsString.noImage) { (_) in
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                 }
@@ -62,12 +62,12 @@ class RowTableViewCell: UITableViewCell {
     }()
     
     private let rowImage : UIImageView = {
-        let imgView = UIImageView(image: UIImage(named: "noImage"))
+        let imgView = UIImageView(image: UIImage(named: ConstantsString.noImage))
         imgView.contentMode = .scaleAspectFit
         imgView.clipsToBounds = true
         imgView.layer.cornerRadius = 12
         imgView.layer.borderWidth = 1.0
-        imgView.layer.borderColor = UIColor.red.cgColor
+        imgView.layer.borderColor = UIColor.black.cgColor
         return imgView
     }()
     

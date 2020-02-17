@@ -83,7 +83,7 @@ extension UIImageView {
             case .success(let data):
                 guard let imageToCache = UIImage(data: data) else {
                     DispatchQueue.main.async {
-                        self.image = UIImage(named: "noImage")
+                        self.image = UIImage(named: ConstantsString.noImage)
                     }
                     completionHandler(true)
                     return
@@ -95,7 +95,7 @@ extension UIImageView {
                 completionHandler(true)
             case .failure(_):
                 DispatchQueue.main.async {
-                    self.image = UIImage(named: "failed")
+                    self.image = UIImage(named: ConstantsString.errorImage)
                 }
                 completionHandler(true)
             }

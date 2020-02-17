@@ -37,6 +37,8 @@ class AboutCanadaUITests: XCTestCase {
             // This measures how long it takes to launch your application.
             measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
                 XCUIApplication().launch()
+                let app = XCUIApplication()
+                app.navigationBars["About Canada"].buttons["Refresh"].tap()
             }
         }
     }

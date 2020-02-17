@@ -14,3 +14,9 @@ public enum AccessibilityKey {
     public static let descriptionIdentifier = "%@_description"
     public static let imageViewIdentifier = "%@_imageView"
 }
+
+public enum ConstantsString {
+    public static let cellIdentifier = "rowCellIdentifier"
+    public static let noImage = "noImage"
+    public static let errorImage = "failed"
+}
