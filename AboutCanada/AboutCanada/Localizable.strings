@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  AboutCanada
+
+  Created by Ashish Tripathi on 17/2/20.
+  Copyright © 2020 Ashish Tripathi. All rights reserved.
+*/
+
+// About Canada view controller
+"refreshTitle" = "Refresh";
+"refreshingStatus" = "Refreshing...";
+"okButtonTitle" = "Ok";
+
+// RowCell
+"cellIdentifier" = "%@_cell";
+"titleIdentifier" = "%@_title";
+"descriptionIdentifier" = "%@_description";
+
+
