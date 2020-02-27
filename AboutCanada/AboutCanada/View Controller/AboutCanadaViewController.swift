@@ -9,7 +9,6 @@
 import UIKit
 
 final class AboutCanadaViewController: UIViewController {
-
     private var tableView: UITableView!
     private var activityIndicator = UIActivityIndicatorView()
     private let refreshControl = UIRefreshControl()
@@ -17,49 +16,48 @@ final class AboutCanadaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
-        
+
         aboutCanadaViewModel.delegate = self
         aboutCanadaViewModel.viewDidLoad()
     }
-    
+
     private func setupView() {
-        
         /// Refresh control and Bar button item
         setupRefreshControl()
-        
+
         /// Setup Table view
         setupTableView()
-        
+
         /// Setup loading indicator
         setupActivityIndicator()
     }
-    
+
     private func setupTableView() {
         tableView = UITableView(frame: .zero)
         view.addSubview(tableView)
         tableView.addAnchor(top: view.topAnchor,
-                         left: view.leftAnchor,
-                         bottom: view.bottomAnchor,
-                         right: view.rightAnchor,
-                         paddingTop: 0,
-                         paddingLeft: 0,
-                         paddingBottom: 0,
-                         paddingRight: 0,
-                         width: 0,
-                         height: 0,
-                         enableInsets: false)
+                            left: view.leftAnchor,
+                            bottom: view.bottomAnchor,
+                            right: view.rightAnchor,
+                            paddingTop: 0,
+                            paddingLeft: 0,
+                            paddingBottom: 0,
+                            paddingRight: 0,
+                            width: 0,
+                            height: 0,
+                            enableInsets: false)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsSelection = false
         tableView.register(RowTableViewCell.self, forCellReuseIdentifier: ConstantsString.cellIdentifier)
         tableView.refreshControl = refreshControl
     }
-    
+
     private func setupActivityIndicator() {
         activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        activityIndicator.center = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
+        activityIndicator.center = CGPoint(x: view.bounds.size.width / 2, y: view.bounds.size.height / 2)
         activityIndicator.color = UIColor.darkModeSupportedColor()
         if #available(iOS 13.0, *) {
             activityIndicator.style = .large
@@ -68,13 +66,13 @@ final class AboutCanadaViewController: UIViewController {
         }
         view.addSubview(activityIndicator)
     }
-    
+
     private func setupRefreshControl() {
         let leftBarButton = UIBarButtonItem(title: NSLocalizedString("refreshTitle", comment: ""),
                                             style: .plain,
                                             target: self,
                                             action: #selector(fetchFactsAboutCanada))
-        
+
         refreshControl.addTarget(self,
                                  action: #selector(fetchFactsAboutCanada),
                                  for: .valueChanged)
@@ -85,7 +83,7 @@ final class AboutCanadaViewController: UIViewController {
 
         navigationItem.setRightBarButton(leftBarButton, animated: true)
     }
-    
+
     @objc
     private func fetchFactsAboutCanada() {
         aboutCanadaViewModel.fetchAboutCanadaFacts()
@@ -93,11 +91,12 @@ final class AboutCanadaViewController: UIViewController {
 }
 
 extension AboutCanadaViewController: UITableViewDataSource, UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         guard let rows = aboutCanadaViewModel.filteredRows, !rows.isEmpty else { return 0 }
         return 1
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         guard let rows = aboutCanadaViewModel.filteredRows else { return 0 }
         return rows.count
     }
@@ -112,19 +111,20 @@ extension AboutCanadaViewController: UITableViewDataSource, UITableViewDelegate 
 
 extension AboutCanadaViewController: AboutCanadaViewModelDelegate {
     func shouldDisplayErrorDialog(title: String, message: String) {
-        let alert = Alert.init(title: title,
-                               subTitle: message,
-                               cancelTitle: NSLocalizedString("okButtonTitle", comment: ""))
+        let alert = Alert(title: title,
+                          subTitle: message,
+                          cancelTitle: NSLocalizedString("okButtonTitle", comment: ""))
         alert.presentAlert(from: self)
     }
+
     func isLoading() {
         activityIndicator.startAnimating()
     }
-    
+
     func didFinishLoading() {
-        self.title = aboutCanadaViewModel.facts?.title ?? ""
-        self.tableView.reloadData()
-        self.activityIndicator.stopAnimating()
-        self.refreshControl.endRefreshing()
+        title = aboutCanadaViewModel.facts?.title ?? ""
+        tableView.reloadData()
+        activityIndicator.stopAnimating()
+        refreshControl.endRefreshing()
     }
 }

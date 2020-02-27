@@ -14,7 +14,6 @@ public enum Result<T> {
     case failure(NetworkingErrors)
 }
 
-
 public enum NetworkingErrors: Error {
     case errorParsingJSON
     case noInternetConnection
@@ -24,17 +23,16 @@ public enum NetworkingErrors: Error {
     case customError(String)
 }
 
-
 final class Networking: NSObject {
-    
     // MARK: - Private functions
+
     private static func getData(url: URL,
-                                completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+                                completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
-    
+
     // MARK: - Public functions
-    
+
     /// fetchFactsAboutCanada function will fetch the facts about Canada and returns
     /// Result<Facts> as completion handler
     public static func fetchFactsAboutCanada(shouldFail: Bool = false, completion: @escaping (Result<Facts>) -> Void) {
@@ -44,23 +42,23 @@ final class Networking: NSObject {
         } else {
             urlString = SessionEndPoints.prod.rawValue
         }
-        
-        guard let mainUrlString = urlString,  let url = URL(string: mainUrlString) else { return }
-        
-        Networking.getData(url: url) { (data, response, error) in
-            
+
+        guard let mainUrlString = urlString, let url = URL(string: mainUrlString) else { return }
+
+        Networking.getData(url: url) { data, _, error in
+
             if let error = error {
                 completion(.failure(NetworkingErrors.returnedError(error)))
                 return
             }
-            
+
             guard let data = data,
                 let utf8Data = String(decoding: data, as: UTF8.self).data(using: .utf8),
                 error == nil else {
-                    completion(.failure(NetworkingErrors.dataReturnedNil))
+                completion(.failure(NetworkingErrors.dataReturnedNil))
                 return
             }
-            
+
             do {
                 let decoder = JSONDecoder()
                 let json = try decoder.decode(Facts.self, from: utf8Data)
@@ -70,27 +68,26 @@ final class Networking: NSObject {
             }
         }
     }
-    
+
     /// downloadImage function will download the thumbnail images
     /// returns Result<Data> as completion handler
     public static func downloadImage(url: URL,
                                      completion: @escaping (Result<Data>) -> Void) {
-        Networking.getData(url: url) { data, response, error in
-            
+        Networking.getData(url: url) { data, _, error in
+
             if let error = error {
                 completion(.failure(NetworkingErrors.returnedError(error)))
                 return
             }
-            
+
             guard let data = data, error == nil else {
                 completion(.failure(NetworkingErrors.dataReturnedNil))
                 return
             }
-            
-            DispatchQueue.main.async() {
+
+            DispatchQueue.main.async {
                 completion(.success(data))
             }
         }
     }
 }
-

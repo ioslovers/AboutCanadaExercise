@@ -8,7 +8,7 @@
 
 import Foundation
 
-///End point urls
+/// End point urls
 public enum SessionEndPoints: String {
     case prod = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     case test = "https://www.ashishtripathi.com.au"
